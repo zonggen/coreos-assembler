@@ -151,6 +151,10 @@ if args.ostree_repo:
     assert args.ostree_ref
     ks_tmp.write(f"""
 ostreesetup --nogpg --osname={args.ostree_stateroot} --remote={args.ostree_remote} --url=http://{ipv4}:{PORT}/ --ref="{args.ostree_ref}"
++%pre
++curl -L -O http://{ipv4}:{PORT}/ostreebuild.tar.gz
++tar -C / -xf ostreebuild.tar.gz
++%end
     """)
 
 if args.fs9p:

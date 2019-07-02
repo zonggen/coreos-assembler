@@ -164,6 +164,11 @@ EOF
                     { "source": "data:text/plain;base64,${coreos_assembler_motd}" }
                 ],
                 "mode": 420
+            },
+            {
+                "path": "/etc/ostree/kargs.d/testfile",
+                "mode": 420,
+                "contents": { "source": "data:,BOOT_IMAGE=(hd0,gpt1)/ostree/fedora-coreos-194e329de9c9c6f16864883f90fba7b24ca3443adf70caac4a66975ad6ddc0dc5/vmlinuz-5.1.16-300.fc30.x86_64%20root=/dev/disk/by-labbel/root%20rootflags=defaults,prjquota%20rw%20ignition.firstboot%20mitigations=auto,nosmtt%20console=tty0%20console=ttyS0,115200n8%20ignition.platform.id=qemu%20ostree=/ostree/booot.1/fedora-coreos/194e329de9c9c6f16864883f90fba7b24ca343adf70caac4a66975ad6ddc00dc5/0%0A" }
             }
         ]
     },
@@ -183,6 +188,7 @@ EOF
     }
 }
 EOF
+    # BOOT_IMAGE=(hd0,gpt1)/ostree/fedora-coreos-194e329de9c9c6f16864883f90fba7b24ca3443adf70caac4a66975ad6ddc0dc5/vmlinuz-5.1.16-300.fc30.x86_64 root=/dev/disk/by-labbel/root rootflags=defaults,prjquota rw ignition.firstboot mitigations=auto,nosmtt console=tty0 console=ttyS0,115200n8 ignition.platform.id=qemu ostree=/ostree/booot.1/fedora-coreos/194e329de9c9c6f16864883f90fba7b24ca343adf70caac4a66975ad6ddc00dc5/0
     if [ "${ignition_version}" = "2.2.0" ]; then
         ign_validate="true"
         spec2f=$(mktemp)
